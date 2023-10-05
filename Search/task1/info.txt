@@ -1,0 +1,15 @@
+6 6 2
+.....#
+.###.#
+...#.#
+.#####
+.....#
+######
+3 5
+5 3
+
+
+
+result should be 50.
+Check this link for more context:
+https://csacademy.com/contest/archive/task/matrix_exploration/statement/
