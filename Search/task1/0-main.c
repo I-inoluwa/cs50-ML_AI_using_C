@@ -33,11 +33,13 @@ int main(void)
 
 	initial = initialize(arr);
 	final = stack_algorithm(arr, initial, goals);
+	// final = improved_search(arr, initial, goals);
 
 	print_frontier(final);
-	show_path(final, arr);
+	track_path(final, arr);
 	show_explored(final, arr);
 	free_frontier(goals), free_frontier(final);
+	free_frontier(initial);
 	free_arr(arr);
 
 	return (0);

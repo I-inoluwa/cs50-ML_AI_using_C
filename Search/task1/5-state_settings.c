@@ -16,9 +16,19 @@ void free_state(state cur_state)
 {
 	if (cur_state == NULL)
 		return;
-
+	
 	free(cur_state->coord);
-	free(cur_state);
+
+	/*
+	if (cur_state->parent == NULL)
+	{
+		free(cur_state);
+		return;
+	}
+	*/
+	
+	free_state(cur_state->parent);
+	free(cur_state);	
 }
 
 state copy_state(state cur_state)

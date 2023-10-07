@@ -21,10 +21,11 @@ int check_space(char *str, char *delim);
 
 
 int print_tab(char **array);
+void print_to_file(char **array, FILE *file);
 int printt_tab(int array[]);
 void print_state(state cs);
 int print_frontier(frontier_ ft);
-void show_path(frontier_ explored, char **arr);
+void track_path(frontier_ explored, char **arr);
 void show_explored(frontier_ explored, char **arr);
 
 void free_arr(char **array);
@@ -47,9 +48,16 @@ state get_state(state cur_state, state (*move)(state, char **), char **arr);
 state copy_state(state cur_state);
 void free_state(state cur_state);
 
+state min_state(frontier_ frontier, state goal, state min);
+int heuristic(state pos, state goal);
+int moves_made(state cur_state);
+frontier_ improved_search(char **arr, frontier_ initial, state *goal_states);
+
 frontier_ copy_frontier_pop(frontier_ frontier);
+frontier_ copy_frontier(frontier_ frontier);
 frontier_ add_state(state new_state, frontier_ frontier);
-frontier_ stack_algorithm(char **arr, frontier_ frontier, state *goal_states);
+frontier_ remove_state(frontier_ frontier, state max);
+frontier_ stack_algorithm(char **arr, frontier_ initial, state *goal_states);
 
 int len_frontier(frontier_ frontier);
 void free_frontier(frontier_ frontier);

@@ -1,9 +1,9 @@
 #include "main.h"
 
-frontier_ stack_algorithm(char **arr, frontier_ frontier, state *goal_states)
+frontier_ stack_algorithm(char **arr, frontier_ initial, state *goal_states)
 {
 	state cur_state = NULL, goal = NULL, pos_state = NULL;
-	frontier_ explored = NULL, new_frontier = NULL;
+	frontier_ explored = NULL, new_frontier = NULL, frontier = NULL;
 	int ind = 0, i = 0, j = 0, end = 0;
 	int len = len_frontier(goal_states);
 
@@ -14,8 +14,10 @@ frontier_ stack_algorithm(char **arr, frontier_ frontier, state *goal_states)
 		left
 		};
 
-	if (arr == NULL || frontier == NULL)
+	if (arr == NULL || initial == NULL)
 		return (NULL);
+
+	frontier = copy_frontier(initial);
 
 	while (1)
 	{
@@ -64,6 +66,8 @@ frontier_ stack_algorithm(char **arr, frontier_ frontier, state *goal_states)
 
 	if (end == 1)
 		return (explored);
+
+	free_frontier(explored);
 
 	return (NULL);
 }
