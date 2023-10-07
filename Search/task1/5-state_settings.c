@@ -27,11 +27,11 @@ state copy_state(state cur_state)
 
 	if (cur_state == NULL)
 		return (NULL);
-
+	
 	new_state = malloc(sizeof(position));
 	new_state->c = cur_state->c;
 	new_state->coord = int_copy(cur_state->coord, 2);
-	new_state->parent = cur_state->parent;
+	new_state->parent = copy_state(cur_state->parent);
 
 	return (new_state);
 }
